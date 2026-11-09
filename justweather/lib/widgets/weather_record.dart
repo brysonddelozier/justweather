@@ -21,6 +21,7 @@ class _WeatherRecordState extends State<WeatherRecord> {
     weatherData = getWeather(latitude: widget.location.latitude, longitude: widget.location.longitude);
   }
 
+  @override
   Widget build(BuildContext context) {
     return Card(
       child: FutureBuilder<WeatherData>(

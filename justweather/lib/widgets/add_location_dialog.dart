@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:justweather/api/location_api.dart';
 
-import 'package:flutter/material.dart';
-import 'package:justweather/api/location_api.dart';
 
 class CitySearchDialog extends StatefulWidget {
   final Function(City) onCityAdded;
@@ -61,6 +59,7 @@ class _CitySearchDialogState extends State<CitySearchDialog> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: Text(cities[index].name),
+                        trailing: Text(cities[index].state ?? 'International'),
                         onTap: () {
                           widget.onCityAdded(cities[index]);
                           Navigator.pop(context);
