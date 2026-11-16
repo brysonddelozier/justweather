@@ -1,4 +1,6 @@
 // Started with https://docs.flutter.dev/development/ui/widgets-intro
+//import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
+
 import 'package:flutter/material.dart';
 import 'package:justweather/objects/locations.dart';
 import 'package:justweather/widgets/weather_record.dart';
@@ -12,7 +14,7 @@ class ToDoList extends StatefulWidget {
 }
 
 class _ToDoListState extends State<ToDoList> {
-  final List<Location> locations = [
+  List<Location> locations = [
     Location(name: "Conway", latitude: 35.0887, longitude: -92.4421),
   ];
 
@@ -32,6 +34,12 @@ class _ToDoListState extends State<ToDoList> {
               });
             },
           ),
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              setState(() {});
+            },
+          ),
         ],
       ),
       body: NotificationListener<OverscrollIndicatorNotification>(
@@ -43,7 +51,7 @@ class _ToDoListState extends State<ToDoList> {
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           children: locations.map((location) {
             return Dismissible(
-              key: Key(location.name),
+              key: UniqueKey(),
               direction: DismissDirection.endToStart,
               onDismissed: (direction) {
                 setState(() {
